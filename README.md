@@ -1,5 +1,15 @@
 # Project2
 
+Group Members:
+
+* Diane Sabra
+* Liane Suarez
+* Aaron Gladstone
+
+The DateBook blends the ideas of a Kanbon model with a calendar. The advantage of using a Datebook of a calendar is to lose all of the white/empty space that a calendar contains, so that you can focus on the dates that actually matter to you. The target audience of the application is for people that look to become more organized, without using a calendar. The Datebook will be able to solve the problem of forgetting important deadlines, meetings, birthdays or anniversaries. 
+
+Instruction Guide:
+
 Welcome to the DateBook.
 
 The Datebook was created to help a user keep all of their events in a row(literally and figuratively). The user will create a new event and fill out a form containing multiple fields(Event name, description, category[work, school, meetings, personal, payment, reminders, misc/random], date, time of day, if the event is recorring[daily, weekly, monthly, yearly], and if they would like to recieve a notificaton about their event).
