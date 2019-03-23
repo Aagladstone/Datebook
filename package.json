@@ -1,5 +1,5 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "handlebars-boilerplate",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -11,11 +11,20 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bulma": "^0.7.4",
     "dotenv": "^6.0.0",
+<<<<<<< HEAD
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+=======
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "mustard-ui": "0.0.8",
+>>>>>>> feff01f7e3b707e3eefb868815163c02ab413dcd
     "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2"
+    "sequelize": "^4.43.0",
+    "uikit": "^3.0.3"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -26,5 +35,17 @@
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aagladstone/Project2.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Aagladstone/Project2/issues"
+  },
+  "homepage": "https://github.com/Aagladstone/Project2#readme"
 }
