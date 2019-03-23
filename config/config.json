@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "root",
-    "database": "dates_db",
-=======
     "password": "Khara6290",
     "database": "project2db",
->>>>>>> feff01f7e3b707e3eefb868815163c02ab413dcd
     "host": "localhost",
     "dialect": "mysql"
   },
