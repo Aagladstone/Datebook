@@ -25,3 +25,9 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
+// app.post("/api/login", function(req, res) {
+//   db.Login.create(req.body).then(function(dbLogin) {
+//     res.json(dbLogin);
+//   });
+// });
