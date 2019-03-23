@@ -27,37 +27,67 @@
 
   <a class="scroll-down" href=""></a>
 </header>
-<div class="modal-mask" id="modal-mask" style="display: none;">
-  <div class="modal" id="modal" style="display: none;">
-    <div class="modal-head">
-      <p class="modal-title">Create Your DateBook!</p>
-    </div>
-    <div class="modal-body">
-      <div class="form-control">
-        <label>Name</label>
-        <input type="text" placeholder="Enter Your Name">
-        <label>Email</label>
-        <input type="text" placeholder="Enter Your Email">
-      </div>
-    </div>
-    <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
-        class="modal-create button-primary">Create</button></div>
-  </div>
+<div class="modal-mask" id="modal-user" style="display: none;">
+ <div class="modal" id="modal-user2" style="display: none;">
+   <div class="modal-head">
+     <p class="modal-title">Create Your DateBook!</p>
+   </div>
+   <div class="modal-body">
+     <div class="form-control">
+       <label>Name</label>
+       <input type="text" placeholder="Enter Your Name">
+       <label>Email</label>
+       <input type="text" placeholder="Enter Your Email">
+     </div>
+   </div>
+   <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
+       class="modal-createUser button-primary">Create</button></div>
+ </div>
 </div>
+<button class="create-event show-modal button button-primary button-medium" href="api/event">Create Event</button>
+<div class="modal-mask" id="modal-event" style="display: none;">
+ <div class="modal" id="modal-event2" style="display: none;">
+   <div class="modal-head">
+     <p class="modal-title">Create Event</p>
+   </div>
+   <div class="modal-body">
+     <div class="form-control">
+       <label>Title</label>
+       <input type="text" placeholder="Enter Your Name">
+       <label>Date</label>
+       <input type="date" placeholder="Enter Your Name">
+       <label>Time</label>
+       <input type="time" placeholder="Enter Your Name">
+       <label>Description</label>
+       <input type="text" placeholder="Enter Your Email">
+     </div>
+   </div>
+   <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
+       class="modal-createEvent button-primary">Create</button></div>
+ </div>
+</div>
+<div class="form-control">
+ <label>Description</label>
+ <input type="text" placeholder="Enter Your Description">
+ <label>Date</label>
+ <input type="date" placeholder="Enter Your Date">
+</div>
+ <button class="button" href="api/event">new event</button></div>
 <section>
 
   <div class="row">
     <div class="col-lg-2">
       <div class="form-control">
         <label>Your Name</label>
-        <select>
-          <option>Diane</option>
-          <option>Aaron</option>
-          <option>Liane</option>
+        <select id="user-list">
+          {{#each user}}
+            
+              <option>{{this.name}}</option>
+          
+          {{/each}}
         </select>
         <label>Today's Date:</label>
       </div>
-
     </div>
     <div class="col-lg-10 categories">
       <div class="main-wrapper categories"></div>
@@ -88,6 +118,7 @@
       <div class="badge blue">
         <div class="circle"> <i class="fa fa-certificate"></i></div>
         <div class="ribbon">Reminders</div>
+    
       </div>
     </div>
   </div>
@@ -497,17 +528,27 @@
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  $(".get-started").on("click", function () {
-    document.getElementById("modal-mask").style.display = "block"
-    document.getElementById("modal").style.display = "block"
-  });
-  $(".modal-create").on("click", function () {
-    document.getElementById("modal-mask").style.display = "none"
-    document.getElementById("modal").style.display = "none"
-  });
-  $(".modal-cancel").on("click", function () {
-    document.getElementById("modal-mask").style.display = "none"
-    document.getElementById("modal").style.display = "none"
-  });
+ $(".get-started").on("click", function () {
+   document.getElementById("modal-user").style.display = "block"
+   document.getElementById("modal-user2").style.display = "block"
+ });
+ $(".create-event").on("click", function () {
+   document.getElementById("modal-event").style.display = "block"
+   document.getElementById("modal-event2").style.display = "block"
+ });
+ $(".modal-createUser").on("click", function () {
+   document.getElementById("modal-user").style.display = "none"
+   document.getElementById("modal-user2").style.display = "none"
+ });
+ $(".modal-createEvent").on("click", function () {
+   document.getElementById("modal-event").style.display = "none"
+   document.getElementById("modal-event2").style.display = "none"
+ });
+ $(".modal-cancel").on("click", function () {
+   document.getElementById("modal-event").style.display = "none"
+   document.getElementById("modal-event2").style.display = "none"
+   document.getElementById("modal-user").style.display = "none"
+   document.getElementById("modal-user2").style.display = "none"
+ });
 </script>
 <script src="/js/index.js"></script>
