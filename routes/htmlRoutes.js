@@ -3,10 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.User.findAll({}).then(function(dbExamples) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+        user: dbExamples
       });
     });
   });
@@ -19,6 +18,7 @@ module.exports = function(app) {
       res.render("example", {
         example: dbExample
       });
+
     });
   });
 
@@ -27,3 +27,9 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
+// app.post("/api/user", function(req, res) {
+//   db.User.create(req.body).then(function(dbuser) {
+//     res.json(dbuser);
+//   });
+// });
