@@ -9,6 +9,7 @@ h3,
 .modal-mask {
   font-family: "Playfair Display", serif;
   font-size: 15px;
+  z-index: 15;
 }
 
 .modal {

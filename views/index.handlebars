@@ -44,7 +44,6 @@
         class="modal-createUser button-primary">Create</button></div>
   </div>
 </div>
-{{!-- Second Modal --}}
 <button class="create-event show-modal button button-primary button-medium" href="api/event">Create Event</button>
 <div class="modal-mask" id="modal-event" style="display: none;">
   <div class="modal" id="modal-event2" style="display: none;">
@@ -67,8 +66,13 @@
         class="modal-createEvent button-primary">Create</button></div>
   </div>
 </div>
-
-
+<div class="form-control">
+  <label>Description</label>
+  <input type="text" placeholder="Enter Your Description">
+  <label>Date</label>
+  <input type="date" placeholder="Enter Your Date">
+</div>
+<button class="button" href="api/event">new event</button></div>
 <section>
 
 
@@ -78,13 +82,14 @@
       <div class="form-control">
         <label>Your Name</label>
         <select id="user-list">
-          <option>Diane</option>
-          <option>Aaron</option>
-          <option>Liane</option>
+          {{#each user}}
+
+          <option>{{this.name}}</option>
+
+          {{/each}}
         </select>
         <label>Today's Date:</label>
       </div>
-
     </div>
     <div class="col-lg-10 categories">
       <div class="main-wrapper categories"></div>
@@ -115,6 +120,7 @@
       <div class="badge blue">
         <div class="circle"> <i class="fa fa-certificate"></i></div>
         <div class="ribbon">Reminders</div>
+
       </div>
     </div>
   </div>
