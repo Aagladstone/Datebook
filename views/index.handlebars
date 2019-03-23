@@ -1,33 +1,513 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+<header>
+  <h1 class="title">DATEBOOK</h1>
+  <h2 class="subtitle">No...This is not a dating app...</h2>
+  <div class="stepper">
+    <div class="step">
+      <p class="step-number">1</p>
+      <p class="step-title">Step Number 1</p>
+      <button class="get-started show-modal button button-primary button-medium">Sign Up!</button>
+      </p>
+    </div>
+    <div class="step">
+      <p class="step-number">2</p>
+      <p class="step-title">Step Number Two</p>
+      <p>Check out the Past Board for all your past events</p>
+    </div>
+    <div class="step">
+      <p class="step-number">3</p>
+      <p class="step-title">Step Number Three</p>
+      <p>Check out Today's Board for today's events</p>
+    </div>
+    <div class="step">
+      <p class="step-number">4</p>
+      <p class="step-title">Step Number Four</p>
+      <p>Check out the Upcoming Board for later events</p>
+    </div>
+  </div>
+
+  <a class="scroll-down" href=""></a>
+</header>
+<div class="modal-mask" id="modal-mask" style="display: none;">
+  <div class="modal" id="modal" style="display: none;">
+    <div class="modal-head">
+      <p class="modal-title">Create Your DateBook!</p>
+    </div>
+    <div class="modal-body">
+      <div class="form-control">
+        <label>Name</label>
+        <input type="text" placeholder="Enter Your Name">
+        <label>Email</label>
+        <input type="text" placeholder="Enter Your Email">
+      </div>
+    </div>
+    <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
+        class="modal-create button-primary">Create</button></div>
+  </div>
+</div>
+<section>
+
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="form-control">
+        <label>Your Name</label>
+        <select>
+          <option>Diane</option>
+          <option>Aaron</option>
+          <option>Liane</option>
+        </select>
+        <label>Today's Date:</label>
+      </div>
+
+    </div>
+    <div class="col-lg-10 categories">
+      <div class="main-wrapper categories"></div>
+      <div class="badge yellow">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Work</div>
+      </div>
+      <div class="badge orange">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">School</div>
+      </div>
+      <div class="badge pink">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Meetings</div>
+      </div>
+      <div class="badge red">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Personal</div>
+      </div>
+      <div class="badge purple">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Random</div>
+      </div>
+      <div class="badge teal">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Payment</div>
+      </div>
+      <div class="badge blue">
+        <div class="circle"> <i class="fa fa-certificate"></i></div>
+        <div class="ribbon">Reminders</div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  <div class="pricing-table row">
+    <div class="col col-sm-4">
+      <div class="package">
+        <p class="package-name h2">Past</p>
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card pink">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card teal">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card red">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card orange">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+      </div>
 
+    </div>
+    <div class="col col-sm-4">
+      <div class="package">
+        <p class="package-name h2">Today</p>
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card pink">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card gold">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card purple">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card green">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+      </div>
+
+    </div>
+    <div class="col col-sm-4">
+      <div class="package">
+        <p class="package-name">Upcoming</p>
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card blue">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card teal">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card gold">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+        {{!-- BEGIN --}}
+        <div class="row">
+          <div class="card yellow">
+            <div class="row">
+              <div class="col col-sm-2">
+                <div class="row icons">
+                  <div class="col col-sm-12">MAR 30</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-4">
+                <div class="card-image">
+                  <span class="card-title">Card Title</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+                  <p class="event-details">Pay Bills: $1,200 </br>
+                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                </div>
+              </div>
+              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
+                Description
+                Goes Here Description Goes Here Description Goes</div>
+            </div>
+          </div>
+        </div>
+        {{!-- END --}}
+      </div>
+
+</section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(".get-started").on("click", function () {
+    document.getElementById("modal-mask").style.display = "block"
+    document.getElementById("modal").style.display = "block"
+  });
+  $(".modal-create").on("click", function () {
+    document.getElementById("modal-mask").style.display = "none"
+    document.getElementById("modal").style.display = "none"
+  });
+  $(".modal-cancel").on("click", function () {
+    document.getElementById("modal-mask").style.display = "none"
+    document.getElementById("modal").style.display = "none"
+  });
+</script>
 <script src="/js/index.js"></script>
