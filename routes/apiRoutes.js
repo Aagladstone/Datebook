@@ -1,3 +1,4 @@
+
 var db = require("../models");
 
 module.exports = function(app) {
@@ -7,8 +8,6 @@ module.exports = function(app) {
       res.json(results);
     });
   });
-  // console.log(req.body);
-  debugger;
   // Create a new example
   app.post("/api/user", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
@@ -16,12 +15,7 @@ module.exports = function(app) {
     });
     console.log(req.body);
   });
-  app.post("/api/event", function(req, res) {
-    db.Event.create(req.body).then(function(dbEvent) {
-      res.json(dbEvent);
-    });
-    console.log(req.body);
-  });
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {

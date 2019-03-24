@@ -18,6 +18,18 @@ var API = {
       location.reload();
     });
   },
+  saveEvent: function(event) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/event",
+      data: JSON.stringify(event)
+    }).then(function() {
+      location.reload();
+    });
+  },
   getUser: function() {
     return $.ajax({
       url: "/",
@@ -26,6 +38,14 @@ var API = {
       location.reload();
     });
   },
+  // getEvent: function() {
+  //   return $.ajax({
+  //     url: "/",
+  //     type: "GET"
+  //   }).then(function() {
+  //     location.reload();
+  //   });
+  // },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -50,7 +70,6 @@ var handleFormSubmit = function(event) {
     alert("You must enter an example text and description!");
     return;
   }
-console.log("hello?")
   API.saveUser(user).then(function() {
     refreshExamples();
   });
@@ -59,6 +78,33 @@ console.log("hello?")
   $("#email").val("");
 };
 
+var handleEventSubmit = function(event) {
+  event.preventDefault();
+
+  var event = {
+    eventName: $("#eventName").val().trim(),
+    notification: false,
+    date: $("#eventDate").val().trim(),
+    time: $("#eventTime").val().trim(),
+    description: $("#eventDescription").val().trim()
+  };
+
+  // if (!(user.name && user.email)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
+console.log("hello?")
+  API.saveEvent(event).then(function() {
+    refreshExamples();
+  });
+
+  $("#eventName").val("");
+  $("#eventDate").val("");
+  $("#eventTime").val("");
+  $("#eventDescription").val("");
+  console.log("this far?")
+  console.log(event)
+};
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
@@ -73,6 +119,7 @@ var handleDeleteBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $(".submit").on("click", handleFormSubmit);
+$(".eventSubmit").on("click", handleEventSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 $(document).ready(function() {
   $(".scroll-down").on("click", function(e) {

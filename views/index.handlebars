@@ -35,13 +35,13 @@
    <div class="modal-body">
      <div class="form-control">
        <label>Name</label>
-       <input type="text" placeholder="Enter Your Name">
+       <input type="text" id="name" placeholder="Enter Your Name">
        <label>Email</label>
-       <input type="text" placeholder="Enter Your Email">
+       <input type="text" id="email" placeholder="Enter Your Email">
      </div>
    </div>
    <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
-       class="modal-createUser button-primary">Create</button></div>
+       class="modal-createUser button-primary submit">Create</button></div>
  </div>
 </div>
 <button class="create-event show-modal button button-primary button-medium" href="api/event">Create Event</button>
@@ -52,27 +52,27 @@
    </div>
    <div class="modal-body">
      <div class="form-control">
-       <label>Title</label>
-       <input type="text" placeholder="Enter Your Name">
+       <label>Event</label>
+       <input type="text" id="eventName" placeholder="Enter Name of Event">
        <label>Date</label>
-       <input type="date" placeholder="Enter Your Name">
+       <input type="date" id="eventDate" placeholder="Enter Date">
        <label>Time</label>
-       <input type="time" placeholder="Enter Your Name">
+       <input type="time" id="eventTime"placeholder="Enter Time">
        <label>Description</label>
-       <input type="text" placeholder="Enter Your Email">
+       <input type="text" id="eventDescription" placeholder="Enter Description">
      </div>
    </div>
    <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
-       class="modal-createEvent button-primary">Create</button></div>
+       class="modal-createEvent button-primary eventSubmit">Create</button></div>
  </div>
 </div>
-<div class="form-control">
+{{!-- <div class="form-control">
  <label>Description</label>
  <input type="text" placeholder="Enter Your Description">
  <label>Date</label>
  <input type="date" placeholder="Enter Your Date">
 </div>
- <button class="button" href="api/event">new event</button></div>
+ <button class="button" href="api/event">new event</button></div> --}}
 <section>
 
   <div class="row">
