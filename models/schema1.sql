@@ -4,8 +4,6 @@ USE project2_db;
 CREATE TABLE user (
   iduser INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
-  middle_name VARCHAR(45) NULL,
-  last_name VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   PRIMARY KEY (iduser));
   

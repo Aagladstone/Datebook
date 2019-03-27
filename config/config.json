@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "Lsc880218!",
     "database": "dates_db",
     "host": "localhost",
     "dialect": "mysql"
