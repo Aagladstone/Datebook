@@ -3,25 +3,22 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [45]
-      }
+      len: [45]
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [45]
-      }
+      len: [45]
     },
+  },
+  {
+    freezeTableName: true
   });
-
-  User.associate = function(models) {
-    User.hasMany(models.Event, {
-      onDelete: "restrict",
-      onUpdate: "restrict"
-    });
-  };
-
+  // User.associate = function(models) {
+  //   User.hasMany(models.Event, {
+  //     onDelete: "restrict",
+  //     onUpdate: "restrict"
+  //   });
+  // };
   return User;
 };

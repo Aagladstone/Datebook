@@ -2,7 +2,6 @@
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
-var $exampleList = $("#user-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -18,17 +17,21 @@ var API = {
       location.reload();
     });
   },
-  getUser: function() {
+  saveEvent: function(event) {
     return $.ajax({
-      url: "/",
-      type: "GET"
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/event",
+      data: JSON.stringify(event)
     }).then(function() {
       location.reload();
     });
   },
-  deleteExample: function(id) {
+  deleteEvent: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/event/" + id,
       type: "DELETE"
     });
   }
@@ -50,7 +53,6 @@ var handleFormSubmit = function(event) {
     alert("You must enter an example text and description!");
     return;
   }
-console.log("hello?")
   API.saveUser(user).then(function() {
     refreshExamples();
   });
@@ -59,21 +61,50 @@ console.log("hello?")
   $("#email").val("");
 };
 
+var handleEventSubmit = function(event) {
+  console.log("wth")
+  event.preventDefault();
+
+  var event = {
+    eventName: $("#nameEvent").val().trim(),
+    notification: false,
+    date: $("#date").val().trim(),
+    time: $("#time").val().trim(),
+    description: $("#description").val().trim()
+  };
+
+  // if (!(user.name && user.email)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
+  API.saveEvent(event).then(function() {
+    refreshExamples();
+  });
+
+  $("#nameEvent").val("");
+  $("#date").val("");
+  $("#time").val("");
+  $("#description").val("");
+  console.log("this far?")
+  console.log(event)
+};
+
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteEventBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteEvent(idToDelete).then(function() {
     refreshExamples();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $(".submit").on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(".submitEvent").on("click", handleEventSubmit);
+$(".fa-trash-alt").on("click", handleDeleteEventBtnClick);
 $(document).ready(function() {
   $(".scroll-down").on("click", function(e) {
     e.preventDefault();

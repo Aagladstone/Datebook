@@ -1,18 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "Lsc880218!",
+    "password": "root",
     "database": "dates_db",
     "host": "localhost",
     "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "Khara6290",
-    "database": "project2db",
-    "host": "localhost",
-    "dialect": "mysql",
-    "logging": false
   },
   "production": {
     "username": "cqaa8nn2mtroakl6",
