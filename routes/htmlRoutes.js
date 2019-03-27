@@ -4,18 +4,29 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        user: dbExamples
+      db.Event.findAll({}).then(function(dbEvent) {
+        res.render("index", {
+          user: dbExamples,
+          event: dbEvent
+        });
       });
     });
   });
 
+  // app.get("/", function(req, res) {
+  //   db.Event.findAll({}).then(function(dbEvent) {
+  //     res.render("index", {
+  //       event: dbExamples
+  //     });
+  //   });
+  // });
+
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+  app.get("/event/:id", function(req, res) {
+    db.Event.findAll({ where: { category: req.params.id } }).then(function(
       dbExample
     ) {
-      res.render("example", {
+      res.render("index", {
         example: dbExample
       });
     });
@@ -26,9 +37,3 @@ module.exports = function(app) {
     res.render("404");
   });
 };
-
-// app.post("/api/user", function(req, res) {
-//   db.User.create(req.body).then(function(dbuser) {
-//     res.json(dbuser);
-//   });
-// });

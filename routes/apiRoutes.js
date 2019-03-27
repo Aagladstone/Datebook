@@ -1,4 +1,3 @@
-
 var db = require("../models");
 
 module.exports = function(app) {
@@ -16,11 +15,17 @@ module.exports = function(app) {
     console.log(req.body);
   });
 
+  app.get("/api/event", function(req, res) {
+    db.Event.findAll({}).then(function(results) {
+      res.json(results);
+      console.log(results);
+    });
+    console.log(results);
+  });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/event", function(req, res) {
+    db.Event.create(req.body).then(function(dbEvent) {
+      res.json(dbEvent);
     });
   });
 };

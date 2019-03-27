@@ -66,13 +66,7 @@
        class="modal-createEvent button-primary eventSubmit">Create</button></div>
  </div>
 </div>
-{{!-- <div class="form-control">
- <label>Description</label>
- <input type="text" placeholder="Enter Your Description">
- <label>Date</label>
- <input type="date" placeholder="Enter Your Date">
-</div>
- <button class="button" href="api/event">new event</button></div> --}}
+
 <section>
 
   <div class="row">
@@ -129,12 +123,15 @@
         <p class="package-name h2">Past</p>
         {{!-- BEGIN --}}
         <div class="row">
+            {{#each event}}                
           <div class="card pink">
+                        
             <div class="row">
+
               <div class="col col-sm-2">
-                <div class="row icons">
-                  <div class="col col-sm-12">MAR 30</div>
-                </div>
+               
+                  <div class="col col-sm-12"> {{this.date}} </div>
+                
                 <div class="row icons">
                   <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
                 </div>
@@ -144,117 +141,27 @@
               </div>
               <div class="col col-sm-4">
                 <div class="card-image">
-                  <span class="card-title">Card Title</span>
+                  <span class="card-title"><p>Event:{{this.eventName}}</p></span>
                   <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
                 </div>
                 <div class="card-content">
-                  <p class="event-details">Pay Bills: $1,200 </br>
-                    Recurring: Monthly </br> Time: 8:00 AM</p>
+                  <p class="event-details">
+                    Time: {{this.time}}</p>
                 </div>
               </div>
-              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
-                Description
-                Goes Here Description Goes Here Description Goes</div>
+              <div class="col col-sm-6 event-details">
+                  <p>Description: {{this.description}}</p>
+                  <p>Notify? {{this.notification}}</p>
+
+              </div>
+
             </div>
+                         
           </div>
+             {{/each}}            
         </div>
         {{!-- END --}}
-        {{!-- BEGIN --}}
-        <div class="row">
-          <div class="card teal">
-            <div class="row">
-              <div class="col col-sm-2">
-                <div class="row icons">
-                  <div class="col col-sm-12">MAR 30</div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
-                </div>
-              </div>
-              <div class="col col-sm-4">
-                <div class="card-image">
-                  <span class="card-title">Card Title</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
-                </div>
-                <div class="card-content">
-                  <p class="event-details">Pay Bills: $1,200 </br>
-                    Recurring: Monthly </br> Time: 8:00 AM</p>
-                </div>
-              </div>
-              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
-                Description
-                Goes Here Description Goes Here Description Goes</div>
-            </div>
-          </div>
-        </div>
-        {{!-- END --}}
-        {{!-- BEGIN --}}
-        <div class="row">
-          <div class="card red">
-            <div class="row">
-              <div class="col col-sm-2">
-                <div class="row icons">
-                  <div class="col col-sm-12">MAR 30</div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
-                </div>
-              </div>
-              <div class="col col-sm-4">
-                <div class="card-image">
-                  <span class="card-title">Card Title</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
-                </div>
-                <div class="card-content">
-                  <p class="event-details">Pay Bills: $1,200 </br>
-                    Recurring: Monthly </br> Time: 8:00 AM</p>
-                </div>
-              </div>
-              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
-                Description
-                Goes Here Description Goes Here Description Goes</div>
-            </div>
-          </div>
-        </div>
-        {{!-- END --}}
-        {{!-- BEGIN --}}
-        <div class="row">
-          <div class="card orange">
-            <div class="row">
-              <div class="col col-sm-2">
-                <div class="row icons">
-                  <div class="col col-sm-12">MAR 30</div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-trash-alt"></i></div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
-                </div>
-              </div>
-              <div class="col col-sm-4">
-                <div class="card-image">
-                  <span class="card-title">Card Title</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
-                </div>
-                <div class="card-content">
-                  <p class="event-details">Pay Bills: $1,200 </br>
-                    Recurring: Monthly </br> Time: 8:00 AM</p>
-                </div>
-              </div>
-              <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
-                Description
-                Goes Here Description Goes Here Description Goes</div>
-            </div>
-          </div>
-        </div>
-        {{!-- END --}}
+      
       </div>
 
     </div>
@@ -287,8 +194,7 @@
                 </div>
               </div>
               <div class="col col-sm-6 event-details">Description Goes Here Description Goes Here Description Goes Here
-                Description
-                Goes Here Description Goes Here Description Goes</div>
+              </div>
             </div>
           </div>
         </div>
@@ -552,3 +458,6 @@
  });
 </script>
 <script src="/js/index.js"></script>
+
+
+          

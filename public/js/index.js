@@ -2,7 +2,6 @@
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
-var $exampleList = $("#user-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -30,25 +29,9 @@ var API = {
       location.reload();
     });
   },
-  getUser: function() {
+  deleteEvent: function(id) {
     return $.ajax({
-      url: "/",
-      type: "GET"
-    }).then(function() {
-      location.reload();
-    });
-  },
-  // getEvent: function() {
-  //   return $.ajax({
-  //     url: "/",
-  //     type: "GET"
-  //   }).then(function() {
-  //     location.reload();
-  //   });
-  // },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/event/" + id,
       type: "DELETE"
     });
   }
@@ -79,6 +62,7 @@ var handleFormSubmit = function(event) {
 };
 
 var handleEventSubmit = function(event) {
+  console.log("wth")
   event.preventDefault();
 
   var event = {
@@ -93,7 +77,6 @@ var handleEventSubmit = function(event) {
   //   alert("You must enter an example text and description!");
   //   return;
   // }
-console.log("hello?")
   API.saveEvent(event).then(function() {
     refreshExamples();
   });
@@ -105,14 +88,15 @@ console.log("hello?")
   console.log("this far?")
   console.log(event)
 };
+
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteEventBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteEvent(idToDelete).then(function() {
     refreshExamples();
   });
 };
@@ -120,7 +104,7 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $(".submit").on("click", handleFormSubmit);
 $(".eventSubmit").on("click", handleEventSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(".fa-trash-alt").on("click", handleDeleteEventBtnClick);
 $(document).ready(function() {
   $(".scroll-down").on("click", function(e) {
     e.preventDefault();
