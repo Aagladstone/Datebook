@@ -24,23 +24,27 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [100]
       }
-    });
-  
-    // Event.associate = function(models) {
-    //   Event.belongsTo(models.Categorie, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
-  
-    Event.associate = function(models) {
-      Event.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
-  
-    return Event;
-  };
+    },
+    {
+      freezeTableName: true
+    }
+  );
+
+  // Event.associate = function(models) {
+  //   Event.belongsTo(models.Categorie, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
+
+  // Event.associate = function(models) {
+  //   Event.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: true
+  //     }
+  //   });
+  // };
+
+  return Event;
+};

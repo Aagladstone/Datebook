@@ -66,11 +66,11 @@ var handleEventSubmit = function(event) {
   event.preventDefault();
 
   var event = {
-    eventName: $("#eventName").val().trim(),
+    eventName: $("#nameEvent").val().trim(),
     notification: false,
-    date: $("#eventDate").val().trim(),
-    time: $("#eventTime").val().trim(),
-    description: $("#eventDescription").val().trim()
+    date: $("#date").val().trim(),
+    time: $("#time").val().trim(),
+    description: $("#description").val().trim()
   };
 
   // if (!(user.name && user.email)) {
@@ -81,10 +81,10 @@ var handleEventSubmit = function(event) {
     refreshExamples();
   });
 
-  $("#eventName").val("");
-  $("#eventDate").val("");
-  $("#eventTime").val("");
-  $("#eventDescription").val("");
+  $("#nameEvent").val("");
+  $("#date").val("");
+  $("#time").val("");
+  $("#description").val("");
   console.log("this far?")
   console.log(event)
 };
@@ -103,7 +103,7 @@ var handleDeleteEventBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $(".submit").on("click", handleFormSubmit);
-$(".eventSubmit").on("click", handleEventSubmit);
+$(".submitEvent").on("click", handleEventSubmit);
 $(".fa-trash-alt").on("click", handleDeleteEventBtnClick);
 $(document).ready(function() {
   $(".scroll-down").on("click", function(e) {
