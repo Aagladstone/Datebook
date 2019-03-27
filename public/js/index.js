@@ -18,7 +18,7 @@ var API = {
       location.reload();
     });
   },
-  getUser: function() {
+  getEvent: function() {
     return $.ajax({
       url: "/",
       type: "GET"
@@ -42,15 +42,19 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var user = {
-    name: $("#name").val().trim(),
-    email: $("#email").val().trim()
+    name: $("#name")
+      .val()
+      .trim(),
+    email: $("#email")
+      .val()
+      .trim()
   };
 
   if (!(user.name && user.email)) {
     alert("You must enter an example text and description!");
     return;
   }
-console.log("hello?")
+  console.log("hello?");
   API.saveUser(user).then(function() {
     refreshExamples();
   });

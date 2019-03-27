@@ -11,9 +11,15 @@ h3,
   font-size: 15px;
   z-index: 15;
 }
-
+#event-desc {
+  height: 100px;
+}
+.create-event {
+  width: 100%;
+}
 .modal {
   bottom: -55px;
+  top: 45%;
 }
 p {
   font-size: 25px;

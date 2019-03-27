@@ -44,7 +44,8 @@
         class="modal-createUser button-primary">Create</button></div>
   </div>
 </div>
-<button class="create-event show-modal button button-primary button-medium" href="api/event">Create Event</button>
+<button class="col-lg-12 create-event show-modal button button-primary button-medium" href="api/event">Create
+  Event</button>
 <div class="modal-mask" id="modal-event" style="display: none;">
   <div class="modal" id="modal-event2" style="display: none;">
     <div class="modal-head">
@@ -53,30 +54,24 @@
     <div class="modal-body">
       <div class="form-control">
         <label>Title</label>
-        <input type="text" placeholder="Enter Your Name">
+        <input type="text" id="event-title" placeholder="Enter your Name"><br>
         <label>Date</label>
-        <input type="date" placeholder="Enter Your Name">
+        <input type="date" id="event-date" placeholder="Enter the Date">
         <label>Time</label>
-        <input type="time" placeholder="Enter Your Name">
+        <input type="time" id="event-time" placeholder="Enter the Time"><br>
         <label>Description</label>
-        <input type="text" placeholder="Enter Your Email">
+        <input type="text" id="event-desc" placeholder="Enter Description">
+        <label>Recurring</label>
+        <input type="checkbox" id="event-recur"><br>
+        <label>Notify Me</label>
+        <input type="checkbox" id="event-notify"><br>
       </div>
     </div>
     <div class="modal-footer"><button class="modal-cancel button-primary">Cancel</button><button
         class="modal-createEvent button-primary">Create</button></div>
   </div>
 </div>
-<div class="form-control">
-  <label>Description</label>
-  <input type="text" placeholder="Enter Your Description">
-  <label>Date</label>
-  <input type="date" placeholder="Enter Your Date">
-</div>
-<button class="button" href="api/event">new event</button></div>
 <section>
-
-
-
   <div class="row">
     <div class="col-lg-2">
       <div class="form-control">
