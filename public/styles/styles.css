@@ -12,9 +12,16 @@ h3,
   z-index: 15;
 }
 
-.modal {
+#modal-event2 {
   bottom: -55px;
+  height: 80%;
 }
+
+.modal-body {
+  max-height: calc(100%);
+  overflow-y: scroll;
+}
+
 p {
   font-size: 25px;
 }
