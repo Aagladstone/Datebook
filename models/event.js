@@ -1,9 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    var Event = sequelize.define("Event", {
-      name: {
+  var Event = sequelize.define(
+    "Event",
+    {
+      eventName: {
         type: DataTypes.STRING,
         allowNull: false,
-         len: [45]
+        len: [45]
       },
       notification: {
         type: DataTypes.BOOLEAN,
@@ -22,23 +24,27 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [100]
       }
-    });
-  
-    // Event.associate = function(models) {
-    //   Event.belongsTo(models.Categorie, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
-  
-    Event.associate = function(models) {
-      Event.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
-  
-    return Event;
-  };
+    },
+    {
+      freezeTableName: true
+    }
+  );
+
+  // Event.associate = function(models) {
+  //   Event.belongsTo(models.Categorie, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
+
+  // Event.associate = function(models) {
+  //   Event.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: true
+  //     }
+  //   });
+  // };
+
+  return Event;
+};
