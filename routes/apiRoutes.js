@@ -14,17 +14,11 @@ module.exports = function(app) {
     });
     console.log(req.body);
   });
-
-  app.get("/api/event", function(req, res) {
-    db.Event.findAll({}).then(function(results) {
-      res.json(results);
-      console.log(results);
-    });
-    console.log(results);
-  });
-
-  app.post("/api/event", function(req, res) {
-    db.Event.create(req.body).then(function(dbEvent) {
+  app.delete("api/event/:id", function(req, res) {
+    console.log(req);
+    db.Event.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbEvent) {
       res.json(dbEvent);
     });
   });

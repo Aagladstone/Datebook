@@ -22,15 +22,15 @@ module.exports = function(app) {
   // });
 
   // Load example page and pass in an example by id
-  app.get("/event/:id", function(req, res) {
-    db.Event.findAll({ where: { category: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("index", {
-        example: dbExample
-      });
-    });
-  });
+  // app.get("/event/:id", function(req, res) {
+  //   db.Event.findAll({ where: { category: req.params.id } }).then(function(
+  //     dbExample
+  //   ) {
+  //     res.render("index", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

@@ -30,9 +30,21 @@ var API = {
     });
   },
   deleteEvent: function(id) {
+    // debugger;
     return $.ajax({
-      url: "api/event/" + id,
-      type: "DELETE"
+      type: "DELETE",
+      url: "api/event/" + id
+    }).then(function() {
+      location.reload();
+    });
+  },
+  updateEvent: function(id) {
+    // debugger;
+    return $.ajax({
+      type: "PUT",
+      url: "api/event/" + id
+    }).then(function() {
+      location.reload();
     });
   }
 };
@@ -45,8 +57,12 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var user = {
-    name: $("#name").val().trim(),
-    email: $("#email").val().trim()
+    name: $("#name")
+      .val()
+      .trim(),
+    email: $("#email")
+      .val()
+      .trim()
   };
 
   if (!(user.name && user.email)) {
@@ -62,15 +78,23 @@ var handleFormSubmit = function(event) {
 };
 
 var handleEventSubmit = function(event) {
-  console.log("wth")
+  console.log("wth");
   event.preventDefault();
 
   var event = {
-    eventName: $("#nameEvent").val().trim(),
+    eventName: $("#nameEvent")
+      .val()
+      .trim(),
     notification: false,
-    date: $("#date").val().trim(),
-    time: $("#time").val().trim(),
-    description: $("#description").val().trim()
+    date: $("#date")
+      .val()
+      .trim(),
+    time: $("#time")
+      .val()
+      .trim(),
+    description: $("#description")
+      .val()
+      .trim()
   };
 
   // if (!(user.name && user.email)) {
@@ -85,26 +109,40 @@ var handleEventSubmit = function(event) {
   $("#date").val("");
   $("#time").val("");
   $("#description").val("");
-  console.log("this far?")
-  console.log(event)
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteEventBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
+  var idToDelete = $(this).attr("data-id");
   API.deleteEvent(idToDelete).then(function() {
     refreshExamples();
   });
 };
 
+// var updateEventClick = function() {
+//   var idToUpdate = $(this).attr("data-id");
+//   console.log(idToUpdate);
+//   $(this).children().hide();
+//   $(this)
+//     .children("input.edit-title")
+//     .val(idToUpdate.text);
+//   $(this)
+//     .children("input.edit-title")
+//     .show();
+//   $(this)
+//     .children("input.edit-title")
+//     .focus();
+//   API.updateEvent(idToUpdate).then(function() {
+//     refreshExamples();
+//   });
+// };
+
 // Add event listeners to the submit and delete buttons
 $(".submit").on("click", handleFormSubmit);
 $(".submitEvent").on("click", handleEventSubmit);
 $(".fa-trash-alt").on("click", handleDeleteEventBtnClick);
+// $(document).on("click", ".card-title", updateEventClick);
 $(document).ready(function() {
   $(".scroll-down").on("click", function(e) {
     e.preventDefault();

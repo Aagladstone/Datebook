@@ -150,7 +150,7 @@
 
               <div class="col col-sm-2">
                 <div class="row icons">
-                  <div class="col col-sm-12">{{this.date}}</div>
+                  <div class="col col-sm-12 edit-date">{{this.date}}</div>
                 </div>
                 <div class="row icons">
                   <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
@@ -161,7 +161,8 @@
               </div>
               <div class="col col-sm-4">
                 <div class="card-image">
-                  <span class="card-title">{{this.eventName}}</span>
+                  <span class="card-title" data-id="{{this.id}}">{{this.eventName}}</span>
+                <input type="text" class="edit-title" style="display: none;">
                   <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
                 </div>
                 <div class="card-content">
@@ -169,7 +170,7 @@
                     Recurring: Monthly </br> Time: 8:00 AM</p>
                 </div>
               </div>
-              <div class="col col-sm-6 event-details">
+              <div class="col col-sm-6 event-details edit-desc">
                   Description: {{this.description}}
                   Notify? {{this.notification}}
               </div>
