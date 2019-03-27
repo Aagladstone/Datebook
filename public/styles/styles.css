@@ -11,16 +11,17 @@ h3,
   font-size: 15px;
   z-index: 15;
 }
-#event-desc {
-  height: 100px;
-}
-.create-event {
-  width: 100%;
-}
-.modal {
+
+#modal-event2 {
   bottom: -55px;
-  top: 45%;
+  height: 80%;
 }
+
+.modal-body {
+  max-height: calc(100%);
+  overflow-y: scroll;
+}
+
 p {
   font-size: 25px;
 }
