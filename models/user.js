@@ -14,11 +14,11 @@ module.exports = function(sequelize, DataTypes) {
   {
     freezeTableName: true
   });
-  // User.associate = function(models) {
-  //   User.hasMany(models.Event, {
-  //     onDelete: "restrict",
-  //     onUpdate: "restrict"
-  //   });
-  // };
+  User.associate = function(models) {
+    User.hasMany(models.Event, {
+      onDelete: "restrict",
+      onUpdate: "restrict"
+    });
+  };
   return User;
 };

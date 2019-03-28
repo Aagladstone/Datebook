@@ -5,9 +5,12 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
       db.Event.findAll({}).then(function(dbEvent) {
-        res.render("index", {
-          user: dbExamples,
-          event: dbEvent
+        db.Categorie.findAll({}).then(function(dbCategorie) {
+          res.render("index", {
+            user: dbExamples,
+            event: dbEvent,
+            categorie: dbCategorie
+          });
         });
       });
     });
