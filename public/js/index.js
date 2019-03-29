@@ -18,6 +18,7 @@ var API = {
     });
   },
   saveEvent: function(event) {
+    console.log("hello ");
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -93,6 +94,7 @@ var handleFormSubmit = function(event) {
 };
 
 var handleEventSubmit = function(event) {
+<<<<<<< HEAD
   debugger;
   console.log(
     $("#user-list")
@@ -100,23 +102,37 @@ var handleEventSubmit = function(event) {
       .trim() + "hello"
   );
   debugger;
+=======
+  console.log("hello");
+>>>>>>> ebec1b4d944e3ad52efbc8d068e47082a87c2ff3
   event.preventDefault();
 
   var event = {
     eventName: $("#nameEvent")
       .val()
       .trim(),
-    notification: false,
-    date: $("#date")
+    // CategorieId: $("#categorie-list")
+    // .val(),
+    description: $("#description")
       .val()
       .trim(),
+    date: $("#date")
+      .val(),
     time: $("#time")
+      .val(),
+    notification: false
+    // $("#notification")
       .val()
+<<<<<<< HEAD
       .trim(),
     description: $("#description")
       .val()
       .trim(),
     UserId: $("#user-list").val()
+=======
+    // UserId: $("#user-list")
+    //   .val()
+>>>>>>> ebec1b4d944e3ad52efbc8d068e47082a87c2ff3
   };
   console.log(event.userId);
 
@@ -129,9 +145,11 @@ var handleEventSubmit = function(event) {
   });
 
   $("#nameEvent").val("");
+  $("#categorie-list").val("");
   $("#date").val("");
   $("#time").val("");
   $("#description").val("");
+  $("#notification").val(false);
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

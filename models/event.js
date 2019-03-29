@@ -30,13 +30,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
 
-  // Event.associate = function(models) {
-  //   Event.belongsTo(models.Categorie, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+  Event.associate = function(models) {
+    Event.belongsTo(models.Categorie, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   Event.associate = function(models) {
     Event.belongsTo(models.User, {

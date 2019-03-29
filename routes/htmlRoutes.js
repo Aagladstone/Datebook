@@ -5,11 +5,13 @@ module.exports = function(app) {
   // Load index page
   app.get("/:id", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
-      db.Event.findAll({ where: { UserId: req.params.id} }).then(function(dbEvent) {
-        debugger;
-        res.render("index", {
-          user: dbExamples,
-          event: dbEvent
+      db.Event.findAll({ where: { UserId: req.params.id } }).then(function(dbEvent) {
+        db.Categorie.findAll({}).then(function(dbCategorie) {
+          res.render("index", {
+            user: dbExamples,
+            event: dbEvent,
+            categorie: dbCategorie
+          });
         });
       });
     });
