@@ -61,18 +61,32 @@
     <form>
       <div class="modal-body">
         <div class="form-group">
+          <div class="row">
+          <div class="col-md-6">
             <label>Title</label>
             <input type="text" class="form-control" id="nameEvent" placeholder="Enter the name of the event" required maxlength="45" minlength="1">
+            <div class="form-group">
+              <label for="categorie-list">Categorie</label>
+              <select class="form-control" id="categorie-list" required>
+                {{#each categorie}}
+                  <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+              </select>
+              <label>Description</label>
+              <input type="text" class="form-control" id="description" maxlength="100">
+            </div>
+          </div>
+          <div class="col-md-6">
             <label>Date</label>
             <input type="date" class="form-control" id="date" required>
             <label>Time</label>
             <input type="time" class="form-control" id="time" required>
-            <label>Description</label>
-            <input type="text" class="form-control" id="description" maxlength="100">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="notification">
               <label class="form-check-label" for="Notification">Notification</label>
             </div>
+          </div>
+        </div>          
         </div>
       </div>
       <div class="modal-footer">
@@ -96,9 +110,9 @@
     <div class="col-lg-2">
       <div class="form-control">
         <label>Your Name</label>
-        <select id="user-list">
+        <select id="user-list" class="form-control">
           {{#each user}}
-            <option>{{this.name}}</option>
+            <option value="{{this.id}}">{{this.name}}</option>
           {{/each}}
         </select>
         {{!-- <label>Today's Date:</label> --}}
