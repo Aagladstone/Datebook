@@ -38,13 +38,13 @@ module.exports = function(sequelize, DataTypes) {
   //   });
   // };
 
-  // Event.associate = function(models) {
-  //   Event.belongsTo(models.User, {
-  //     foreignKey: {
-  //       allowNull: true
-  //     }
-  //   });
-  // };
+  Event.associate = function(models) {
+    Event.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
+  };
 
   return Event;
 };

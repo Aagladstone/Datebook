@@ -70,9 +70,18 @@
             <label>Description</label>
             <input type="text" class="form-control" id="description" maxlength="100">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="notification">
-              <label class="form-check-label" for="Notification">Notification</label>
+              <input type="checkbox" class="form-check-input"> 
+              <label class="form-check-label" for="Notification" id="notification">Notification</label>
             </div>
+             <input class="form-control" id="userChoice" required>
+              <label>User</label> 
+             
+        <select id="user-list">
+          {{#each user}}
+            <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+            <div class="form-check">
         </div>
       </div>
       <div class="modal-footer">
@@ -83,27 +92,25 @@
     </form>
   </div>
 </div>
+<div class="idname" id="idname"></div>
 
-{{!-- <div class="form-control">
- <label>Description</label>
- <input type="text" placeholder="Enter Your Description">
- <label>Date</label>
- <input type="date" placeholder="Enter Your Date">
-</div>
- <button class="button" href="api/event">new event</button></div> --}}
 <section>
   <div class="row">
     <div class="col-lg-2">
       <div class="form-control">
         <label>Your Name</label>
-        <select id="user-list">
-          {{#each user}}
-            <option>{{this.name}}</option>
-          {{/each}}
-        </select>
-        {{!-- <label>Today's Date:</label> --}}
+
+         <select id="user-list2">
+                  {{#each user}}       
+
+                <option value="{{this.id}}"> {{this.name}}</option>
+                  {{/each}}
+               </select>
       </div>
     </div>
+    <script> var userIda = JSON.parse(localStorage.getItem("name"));
+ document.getElementById("idname").innerHTML = userIda;
+</script>
     {{!-- Filters --}}
     <div class="col-lg-10 categories">
     <div class="main-wrapper categories"></div>
@@ -229,6 +236,6 @@
   document.getElementById("modal-user").style.display = "none"
   document.getElementById("modal-user2").style.display = "none"
  });
+
 </script>
 <script src="/js/index.js"></script>
-

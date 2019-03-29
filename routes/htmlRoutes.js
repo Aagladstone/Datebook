@@ -1,10 +1,12 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  // var m = document.getElementById("user-list2");
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/:id", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
-      db.Event.findAll({}).then(function(dbEvent) {
+      db.Event.findAll({ where: { UserId: req.params.id} }).then(function(dbEvent) {
+        debugger;
         res.render("index", {
           user: dbExamples,
           event: dbEvent

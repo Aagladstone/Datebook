@@ -14,12 +14,4 @@ module.exports = function(app) {
     });
     console.log(req.body);
   });
-  app.delete("api/event/:id", function(req, res) {
-    console.log(req);
-    db.Event.destroy({
-      where: { id: req.params.id }
-    }).then(function(dbEvent) {
-      res.json(dbEvent);
-    });
-  });
 };
