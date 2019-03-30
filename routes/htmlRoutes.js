@@ -1,40 +1,65 @@
+var Sequelize = require("sequelize");
 var db = require("../models");
+var moment = require("moment");
+var Op = Sequelize.Op;
 
 module.exports = function(app) {
-  // var m = document.getElementById("user-list2");
-  // Load index page
   app.get("/:id", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
-      db.Event.findAll({ where: { UserId: req.params.id } }).then(function(dbEvent) {
-        db.Categorie.findAll({}).then(function(dbCategorie) {
-          res.render("index", {
-            user: dbExamples,
-            event: dbEvent,
-            categorie: dbCategorie
+      db.Event.findAll({
+        where: {
+          UserID: req.params.id,
+          Date: {
+            [Op.lt]: moment().format("YYYY-MM-DD")
+          }
+        },
+              
+        include:  [db.Categorie]
+        
+      }).then(function(dbEvent) {
+        db.Event.findAll({
+          where: {
+            UserID: req.params.id,
+            Date: moment().format("YYYY-MM-DD")
+          }, 
+
+          include:  [db.Categorie]
+
+        }).then(function(dbEvent2) {
+          db.Event.findAll({
+            where: {
+              UserID: req.params.id,
+              Date: {
+                [Op.gt]: moment().format("YYYY-MM-DD")
+              }
+            },
+              
+              include: [db.Categorie]
+            
+            
+          }).then(function(dbEvent3) {
+              // console.log(dbEvent3[0].dataValues.Categorie.dataValues.color);
+            db.Categorie.findAll({}).then(function(dbCategorie) {
+              res.render("index", {
+                user: dbExamples,
+                event: dbEvent,
+                event2: dbEvent2,
+                event3: dbEvent3,
+                categorie: dbCategorie
+              });
+            });
           });
         });
       });
     });
   });
-
-  // app.get("/", function(req, res) {
-  //   db.Event.findAll({}).then(function(dbEvent) {
-  //     res.render("index", {
-  //       event: dbExamples
-  //     });
-  //   });
-  // });
-
-  // Load example page and pass in an example by id
-  // app.get("/event/:id", function(req, res) {
-  //   db.Event.findAll({ where: { category: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.render("index", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
+  app.get("/", function(req, res) {
+    db.User.findAll({}).then(function(dbExamples) {
+      res.render("index", {
+        user: dbExamples
+      });
+    });
+  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

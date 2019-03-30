@@ -2,6 +2,8 @@
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
+localStorage.setItem("id", "");
+localStorage.setItem("name", "");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -18,7 +20,6 @@ var API = {
     });
   },
   saveEvent: function(event) {
-    console.log("hello ");
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -31,7 +32,6 @@ var API = {
     });
   },
   deleteEvent: function(id) {
-    // debugger;
     return $.ajax({
       type: "DELETE",
       url: "api/event/" + id
@@ -47,20 +47,28 @@ var API = {
       location.reload();
     });
   }
+  // showEvents: function(id) {
+  //   return $.ajax({
+  //     type: "GET",
+  //     url: "/" + id
+  //   }).then(function() {
+
+  //   });
+  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-// var userValue = $("#user-list2").val();
 $("#user-list2").change(function() {
   var userValue = this.value;
-  var usernameaaa = this.name;
-  alert(usernameaaa);
+  var userName1 = this[this.selectedIndex].innerText;
+
+  localStorage.setItem("id", userValue);
+  localStorage.setItem("name", userName1);
+
   return $.ajax({
     type: "GET",
     url: "/" + userValue
   }).then(function() {
-    localStorage.setItem("id", usernameaaa);
- 
     window.location.replace("/" + userValue);
     // error("")
     // $("#user-list2").val();
@@ -80,10 +88,15 @@ var handleFormSubmit = function(event) {
       .val()
       .trim()
   };
+  $(".user-errors").empty();
 
-  if (!(user.name && user.email)) {
-    alert("You must enter an example text and description!");
-    return;
+  if (!user.name) {
+    // alert("You must enter an example text and description!");
+    return $(".user-errors").append("The name must be populated.");
+  }
+  if (!user.email) {
+    // alert("You must enter an example text and description!");
+    return $(".user-errors").append("The email must be populated.");
   }
   API.saveUser(user).then(function() {
     refreshExamples();
@@ -94,52 +107,48 @@ var handleFormSubmit = function(event) {
 };
 
 var handleEventSubmit = function(event) {
-<<<<<<< HEAD
-  debugger;
-  console.log(
-    $("#user-list")
-      .val()
-      .trim() + "hello"
-  );
-  debugger;
-=======
-  console.log("hello");
->>>>>>> ebec1b4d944e3ad52efbc8d068e47082a87c2ff3
   event.preventDefault();
-
+ 
   var event = {
     eventName: $("#nameEvent")
       .val()
       .trim(),
-    // CategorieId: $("#categorie-list")
-    // .val(),
+    CategorieId: $("#categorie-list").val(),
     description: $("#description")
       .val()
       .trim(),
-    date: $("#date")
-      .val(),
-    time: $("#time")
-      .val(),
-    notification: false
-    // $("#notification")
-      .val()
-<<<<<<< HEAD
-      .trim(),
-    description: $("#description")
-      .val()
-      .trim(),
+    date: $("#date").val(),
+    time: $("#time").val(),
     UserId: $("#user-list").val()
-=======
-    // UserId: $("#user-list")
-    //   .val()
->>>>>>> ebec1b4d944e3ad52efbc8d068e47082a87c2ff3
   };
-  console.log(event.userId);
-
-  // if (!(user.name && user.email)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+ 
+  $(".event-errors").empty();
+  debugger;
+  if (!event.eventName) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The name of event must be populated.");
+  }
+  if (!event.date) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The date must be populated.");
+  }
+  if (!event.time) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The time must be populated.");
+  }
+  if (!event.description) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The description must be populated.");
+  }
+  if (!event.UserId) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The user must be populated.");
+  }
+  if (!event.CategorieId) {
+    // alert("You must enter an example text and description!");
+    return $(".event-errors").append("The categorie must be populated.");
+  }
+  
   API.saveEvent(event).then(function() {
     refreshExamples();
   });
@@ -152,8 +161,6 @@ var handleEventSubmit = function(event) {
   $("#notification").val(false);
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
 var handleDeleteEventBtnClick = function() {
   var idToDelete = $(this).attr("data-id");
   API.deleteEvent(idToDelete).then(function() {
@@ -161,8 +168,7 @@ var handleDeleteEventBtnClick = function() {
   });
 };
 
-// Add event listeners to the submit and delete buttons
-$(".submit").on("click", handleFormSubmit);
+$(".submitUser").on("click", handleFormSubmit);
 $(".submitEvent").on("click", handleEventSubmit);
 $(".fa-trash-alt").on("click", handleDeleteEventBtnClick);
 $(document).ready(function() {
@@ -176,33 +182,3 @@ $(document).ready(function() {
     );
   });
 });
-
-// $(document).ready(function() {
-//   var url = window.location.search;
-//   var userId;
-//   var event;
-//   if (url.indexOf("?userId=") !== -1) {
-//     userId = url.split("=")[1];
-//     getPosts(userId);
-//   }
-//   // If there's no authorId we just get all posts as usual
-//   else {
-//     getPosts();
-//   }
-
-//   function getPosts(user) {
-//     userId = user || "";
-//     if (userId) {
-//       userId = "/?userId=" + userId;
-//     }
-//     $.get("/api/event" + userId, function(data) {
-//       console.log("Event", data);
-//       event = data;
-//       // if (!event || !event.length) {
-//       //   displayEmpty(user);
-//       // } else {
-//       //   initializeRows();
-//       // }
-//     });
-//   }
-// });
