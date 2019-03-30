@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-module.export = {
+module.exports = {
   development: {
     username: "root",
     password: process.env.PASSWORD,
