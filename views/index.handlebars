@@ -5,7 +5,7 @@
     <div class="step">
       <p class="step-number">1</p>
       <p class="step-title">Step Number 1</p>
-      <button class="get-started show-modal button button-primary button-medium">Sign Up!</button>
+      <button class="create-user get-started show-modal button button-primary button-medium">Sign Up!</button>
       </p>
     </div>
     <div class="step">
@@ -42,10 +42,10 @@
             <input id="email" type="email" class="form-control" placeholder="Enter Your Email" required maxlength="45" minlength="1">
           </div>
       </div>
+      <div class="user-errors"></div>
       <div class="modal-footer">
           <button class="modal-cancel button-primary">Cancel</button>
-          <button class="button-primary submit">Create</button>
-          {{!-- <button class="button-primary modal-createUser" type="submit">Create</button> --}}
+          <button class="button-primary submit submitUser">Create</button>
       </div>
     </form>
   </div>
@@ -68,6 +68,7 @@
             <div class="form-group">
               <label for="categorie-list">Categorie</label>
               <select class="form-control" id="categorie-list" required>
+                <option label="Select Categorie"></option>
                 {{#each categorie}}
                   <option value="{{this.id}}">{{this.name}}</option>
                 {{/each}}
@@ -81,43 +82,47 @@
             <input type="date" class="form-control" id="date" required>
             <label>Time</label>
             <input type="time" class="form-control" id="time" required>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="notification">
-              <label class="form-check-label" for="Notification">Notification</label>
-            </div>
-          </div>
-        </div>          
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="modal-cancel button-primary">Cancel</button>
-        <button class="modal-createEvent button-primary submitEvent">Create</button></div>
-        {{!-- <button class="modal-createEvent button-primary">Create</button></div> --}}
-      </div>
-    </form>
-  </div>
-</div>
-
-{{!-- <div class="form-control">
- <label>Description</label>
- <input type="text" placeholder="Enter Your Description">
- <label>Date</label>
- <input type="date" placeholder="Enter Your Date">
-</div>
- <button class="button" href="api/event">new event</button></div> --}}
-<section>
-  <div class="row">
-    <div class="col-lg-2">
-      <div class="form-control">
-        <label>Your Name</label>
-        <select id="user-list" class="form-control">
+              <label>User</label> 
+             
+        <select id="user-list" required>
+          <option label="Select User"></option>
           {{#each user}}
             <option value="{{this.id}}">{{this.name}}</option>
           {{/each}}
         </select>
-        {{!-- <label>Today's Date:</label> --}}
+            <div class="form-check">
+        </div>
+       
+      </div>
+  
+      <div class="modal-footer">
+          
+        <button class="modal-cancel button-primary">Cancel</button>
+        <button class="button-primary submit submitEvent">Create</button></div>
+      </div>
+      <div class="event-errors"></div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+<section>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="form-control">
+        <label>Current User:   <span id="showUser"> </span>
+      </label> 
+        <select id="user-list2" class="form-control">
+          <option label="Select User"></option>
+          {{#each user}}
+            <option value="{{this.id}}" label="{{this.name}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+        <label>Today's Date: <span id="todaysdate"></span></label>
       </div>
     </div>
+
     {{!-- Filters --}}
     <div class="col-lg-10 categories">
     <div class="main-wrapper categories"></div>
@@ -147,24 +152,31 @@
     </div>
     <div class="badge blue">
       <div class="circle"> <i class="fa fa-certificate"></i></div>
-      <div class="ribbon">Reminders</div>
+      <div class="ribbon">Birthday</div>
+    </div>
+      <div class="badge gold">
+      <div class="circle"> <i class="fa fa-certificate"></i></div>
+      <div class="ribbon">Anniversary</div>
     </div>
   </div>
   <div class="pricing-table row">
-    <div class="col col-sm-4">
+    <div class="col col-md-4">
       <div class="package">
         <p class="package-name h2">Past</p>
         {{!-- BEGIN --}}
          {{#each event}} 
          <div class="row">
                           
-          <div class="card pink">
+          <div class="card {{this.dataValues.Categorie.dataValues.color}}">
                         
             <div class="row">
 
-              <div class="col col-sm-2">
+              <div class="col col-sm-3">
                 <div class="row icons">
                   <div class="col col-sm-12 edit-date">{{this.date}}</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12 edit-date">{{this.time}}</div>
                 </div>
                 <div class="row icons">
                   <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
@@ -173,21 +185,18 @@
                   <div class="col col-sm-12"><i class="far fa-flag"></i></div>
                 </div>
               </div>
-              <div class="col col-sm-4">
+              <div class="col col-sm-9">
                 <div class="card-image">
                   <span class="card-title" data-id="{{this.id}}">{{this.eventName}}</span>
                 <input type="text" class="edit-title" style="display: none;">
                   <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
                 </div>
                 <div class="card-content">
-                  <p class="event-details">Pay Bills: $1,200 </br>
-                    Recurring: Monthly </br> Time: 8:00 AM</p>
+             
+                  <p class="event-details">{{this.description}}</p>
                 </div>
               </div>
-              <div class="col col-sm-6 event-details edit-desc">
-                  Description: {{this.description}}
-                  Notify? {{this.notification}}
-              </div>
+             
             </div>
           </div>
 
@@ -195,22 +204,95 @@
                     {{/each}} 
         {{!-- END --}}
       
-        {{!-- END --}}
-      
       </div>
     </div>
-    <div class="col col-sm-4">
+    <div class="col col-md-4">
       <div class="package">
         <p class="package-name h2">Today</p>
+   {{!-- BEGIN --}}
+         {{#each event2}} 
+         <div class="row">
+                          
+          <div class="card {{this.dataValues.Categorie.dataValues.color}}">
+                        
+            <div class="row">
 
+              <div class="col col-sm-3">
+                <div class="row icons">
+                  <div class="col col-sm-12 edit-date">{{this.date}}</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12 edit-date">{{this.time}}</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-9">
+                <div class="card-image">
+                  <span class="card-title" data-id="{{this.id}}">{{this.eventName}}</span>
+                <input type="text" class="edit-title" style="display: none;">
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+             
+                  <p class="event-details">{{this.description}}</p>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+        </div>  
+                    {{/each}} 
         {{!-- END --}}
       </div>
     </div>
-    <div class="col col-sm-4">
+    <div class="col col-md-4">
       <div class="package">
         <p class="package-name">Upcoming</p>
+  {{!-- BEGIN --}}
+         {{#each event3}} 
+         <div class="row">
+                          
+          <div class="card {{this.dataValues.Categorie.dataValues.color}}">
+                        
+            <div class="row">
 
-        </div>
+              <div class="col col-sm-3">
+                <div class="row icons">
+                  <div class="col col-sm-12 edit-date">{{this.date}}</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12 edit-date">{{this.time}}</div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
+                </div>
+                <div class="row icons">
+                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
+                </div>
+              </div>
+              <div class="col col-sm-9">
+                <div class="card-image">
+                  <span class="card-title" data-id="{{this.id}}">{{this.eventName}}</span>
+                <input type="text" class="edit-title" style="display: none;">
+                  <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                </div>
+                <div class="card-content">
+             
+                  <p class="event-details">{{this.description}}</p>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+        </div>  
+                    {{/each}} 
         {{!-- END --}}
       </div>
     </div>
@@ -219,7 +301,16 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 <script>
+
+  
+  document.getElementById("todaysdate").innerHTML = moment().format("MM-DD-YYYY");
+  document.getElementById("showUser").innerHTML = localStorage.getItem("name");
+  localStorage.setItem("id", "");
+    localStorage.setItem("name", ""); 
+
  $(".create-user").on("click", function () {
   document.getElementById("modal-user").style.display = "block"
   document.getElementById("modal-user2").style.display = "block"
@@ -233,16 +324,13 @@
   document.getElementById("modal-user").style.display = "none"
   document.getElementById("modal-user2").style.display = "none"
  });
- $(".modal-createEvent").on("click", function () {
-  document.getElementById("modal-event").style.display = "none"
-  document.getElementById("modal-event2").style.display = "none"
- });
  $(".modal-cancel").on("click", function () {
   document.getElementById("modal-event").style.display = "none"
   document.getElementById("modal-event2").style.display = "none"
   document.getElementById("modal-user").style.display = "none"
   document.getElementById("modal-user2").style.display = "none"
+
  });
+
 </script>
 <script src="/js/index.js"></script>
-

@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         default: false
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
       },
       time: {
@@ -35,10 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
-    });
-  };
-
-  Event.associate = function(models) {
+    }),
     Event.belongsTo(models.User, {
       foreignKey: {
         allowNull: true

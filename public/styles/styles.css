@@ -194,11 +194,12 @@ button {
 
 .card {
   color: black;
-  min-height: 140px;
+  min-height: 190px;
 }
 
 .row {
   margin-top: 6px;
+  z-index: 10;
 }
 
 .icons {
@@ -209,4 +210,8 @@ button {
 .categories {
   margin: 0%;
   padding: 0px;
+}
+
+.pricing-table{
+  width: 100%;
 }
