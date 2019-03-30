@@ -91,7 +91,7 @@
       </div>
       <div class="modal-footer">
         <button class="modal-cancel button-primary">Cancel</button>
-        <button class="modal-createEvent button-primary submitEvent">Create</button></div>
+        <button class="button-primary submitEvent">Create</button></div>
         {{!-- <button class="modal-createEvent button-primary">Create</button></div> --}}
       </div>
     </form>
@@ -233,7 +233,7 @@
   document.getElementById("modal-user").style.display = "none"
   document.getElementById("modal-user2").style.display = "none"
  });
- $(".modal-createEvent").on("click", function () {
+ $(".button-primary").on("click", function () {
   document.getElementById("modal-event").style.display = "none"
   document.getElementById("modal-event2").style.display = "none"
  });

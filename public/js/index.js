@@ -66,10 +66,10 @@ var handleFormSubmit = function(event) {
       .trim()
   };
 
-  if (!(user.name && user.email)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(user.name && user.email)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
   API.saveUser(user).then(function() {
     refreshExamples();
   });
