@@ -42,7 +42,7 @@
             <input id="email" type="email" class="form-control" placeholder="Enter Your Email" required maxlength="45" minlength="1">
           </div>
       </div>
-      <div class="user-errors"></div>
+      <div class="user-errors" id="errorFeedback"></div>
       <div class="modal-footer">
           <button class="modal-cancel button-primary">Cancel</button>
           <button class="button-primary submit submitUser">Create</button>
@@ -94,16 +94,21 @@
         </div>
        
       </div>
-  
-      <div class="modal-footer">
-          
-        <button class="modal-cancel button-primary">Cancel</button>
-        <button class="button-primary submit submitEvent">Create</button></div>
+
+
+          </div> 
+          </div>
       </div>
-      <div class="event-errors"></div>
-    </form>
-  </div>
-</div>
+             <div class="event-errors" id="errorFeedback"></div>    
+     <div class="modal-footer">
+              
+            <button class="modal-cancel button-primary">Cancel</button>
+            <button class="button-primary submit submitEvent">Create</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
 </div>
 </div>
 
@@ -181,9 +186,6 @@
                 <div class="row icons">
                   <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
                 </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
-                </div>
               </div>
               <div class="col col-sm-9">
                 <div class="card-image">
@@ -227,9 +229,6 @@
                 <div class="row icons">
                   <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
                 </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
-                </div>
               </div>
               <div class="col col-sm-9">
                 <div class="card-image">
@@ -271,9 +270,6 @@
                 </div>
                 <div class="row icons">
                   <div class="col col-sm-12"><i data-id="{{this.id}}" class="far fa-trash-alt"></i></div>
-                </div>
-                <div class="row icons">
-                  <div class="col col-sm-12"><i class="far fa-flag"></i></div>
                 </div>
               </div>
               <div class="col col-sm-9">

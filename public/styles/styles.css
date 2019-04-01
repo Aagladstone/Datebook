@@ -215,3 +215,7 @@ button {
 .pricing-table{
   width: 100%;
 }
+
+#errorFeedback {
+  text-align: center;
+}
