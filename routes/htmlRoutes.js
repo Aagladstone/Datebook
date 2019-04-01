@@ -4,7 +4,17 @@ var moment = require("moment");
 var Op = Sequelize.Op;
 
 
+
 module.exports = function(app) {
+  
+  app.get("/", function(req, res) {
+  db.User.findAll({}).then(function(dbExamples) {
+    res.render("index", {
+      user: dbExamples
+    });
+  });
+});
+
   app.get("/:id", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
       db.Event.findAll({
@@ -63,13 +73,6 @@ module.exports = function(app) {
             });
           });
         });
-      });
-    });
-  });
-  app.get("/", function(req, res) {
-    db.User.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        user: dbExamples
       });
     });
   });
