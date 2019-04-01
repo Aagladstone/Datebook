@@ -3,6 +3,7 @@ var db = require("../models");
 var moment = require("moment");
 var Op = Sequelize.Op;
 
+
 module.exports = function(app) {
   app.get("/:id", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
@@ -11,8 +12,12 @@ module.exports = function(app) {
           UserID: req.params.id,
           Date: {
             [Op.lt]: moment().format("YYYY-MM-DD")
-          }
+          },
         },
+          order: [
+            ['Date', 'ASC'],
+            ['Time', 'ASC']
+          ],
               
         include:  [db.Categorie]
         
@@ -22,6 +27,11 @@ module.exports = function(app) {
             UserID: req.params.id,
             Date: moment().format("YYYY-MM-DD")
           }, 
+          
+          order: [
+            ['Date', 'ASC'],
+            ['Time', 'ASC']
+          ],
 
           include:  [db.Categorie]
 
@@ -33,6 +43,10 @@ module.exports = function(app) {
                 [Op.gt]: moment().format("YYYY-MM-DD")
               }
             },
+            order: [
+              ['Date', 'ASC'],
+              ['Time', 'ASC']
+            ],
               
               include: [db.Categorie]
             

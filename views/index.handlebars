@@ -308,8 +308,6 @@
   
   document.getElementById("todaysdate").innerHTML = moment().format("MM-DD-YYYY");
   document.getElementById("showUser").innerHTML = localStorage.getItem("name");
-  localStorage.setItem("id", "");
-    localStorage.setItem("name", ""); 
 
  $(".create-user").on("click", function () {
   document.getElementById("modal-user").style.display = "block"

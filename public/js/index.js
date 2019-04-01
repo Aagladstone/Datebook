@@ -1,10 +1,3 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-localStorage.setItem("id", "");
-localStorage.setItem("name", "");
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveUser: function(user) {
@@ -38,23 +31,7 @@ var API = {
     }).then(function() {
       location.reload();
     });
-  },
-  updateEvent: function(id) {
-    return $.ajax({
-      type: "PUT",
-      url: "api/event/" + id
-    }).then(function() {
-      location.reload();
-    });
   }
-  // showEvents: function(id) {
-  //   return $.ajax({
-  //     type: "GET",
-  //     url: "/" + id
-  //   }).then(function() {
-
-  //   });
-  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
@@ -70,12 +47,9 @@ $("#user-list2").change(function() {
     url: "/" + userValue
   }).then(function() {
     window.location.replace("/" + userValue);
-    // error("")
-    // $("#user-list2").val();
   });
 });
 
-// handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
@@ -108,7 +82,6 @@ var handleFormSubmit = function(event) {
 
 var handleEventSubmit = function(event) {
   event.preventDefault();
- 
   var event = {
     eventName: $("#nameEvent")
       .val()
@@ -121,9 +94,8 @@ var handleEventSubmit = function(event) {
     time: $("#time").val(),
     UserId: $("#user-list").val()
   };
- 
+
   $(".event-errors").empty();
-  debugger;
   if (!event.eventName) {
     // alert("You must enter an example text and description!");
     return $(".event-errors").append("The name of event must be populated.");
@@ -131,14 +103,6 @@ var handleEventSubmit = function(event) {
   if (!event.date) {
     // alert("You must enter an example text and description!");
     return $(".event-errors").append("The date must be populated.");
-  }
-  if (!event.time) {
-    // alert("You must enter an example text and description!");
-    return $(".event-errors").append("The time must be populated.");
-  }
-  if (!event.description) {
-    // alert("You must enter an example text and description!");
-    return $(".event-errors").append("The description must be populated.");
   }
   if (!event.UserId) {
     // alert("You must enter an example text and description!");
@@ -148,7 +112,7 @@ var handleEventSubmit = function(event) {
     // alert("You must enter an example text and description!");
     return $(".event-errors").append("The categorie must be populated.");
   }
-  
+
   API.saveEvent(event).then(function() {
     refreshExamples();
   });
@@ -158,7 +122,6 @@ var handleEventSubmit = function(event) {
   $("#date").val("");
   $("#time").val("");
   $("#description").val("");
-  $("#notification").val(false);
 };
 
 var handleDeleteEventBtnClick = function() {
