@@ -52,7 +52,6 @@ module.exports = function(app) {
             
             
           }).then(function(dbEvent3) {
-              // console.log(dbEvent3[0].dataValues.Categorie.dataValues.color);
             db.Categorie.findAll({}).then(function(dbCategorie) {
               res.render("index", {
                 user: dbExamples,
@@ -75,8 +74,7 @@ module.exports = function(app) {
     });
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+ app.get("*", function(req, res) {
     res.render("404");
   });
 };
